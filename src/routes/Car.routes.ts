@@ -9,5 +9,6 @@ const carController = new CarController();
 carRouter.post('/', carController.createCar.bind(carController));
 carRouter.get('/', carController.findAll.bind(carController));
 carRouter.get('/:id', checkId, carController.findById.bind(carController));
+carRouter.put('/:id', checkId, carController.updateCarById.bind(carController));
 
 export default carRouter;
