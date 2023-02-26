@@ -19,6 +19,22 @@ class MotorcycleService {
 
     return { status: 401, message: 'error' };
   }
+
+  public async findAll() {
+    const motorcycleModel = new MotorcycleModel();
+    const getAllMotorcycles = await motorcycleModel.findAll();
+    const motorcyclesInfo = getAllMotorcycles
+      .map((motorcycle) => this.MotorcycleDomain(motorcycle));
+    return { status: 200, result: motorcyclesInfo };
+  }
+
+  public async findById(id: string) {
+    const motorcycleModel = new MotorcycleModel();
+    const getMotorcycleById = await motorcycleModel.findById(id);
+    const motorcycleInfo = this.MotorcycleDomain(getMotorcycleById as IMotorcycle);
+    if (!getMotorcycleById) return { status: 404, message: 'Motorcycle not found' };
+    return { status: 200, result: motorcycleInfo };
+  }
 }
 
 export default MotorcycleService;
