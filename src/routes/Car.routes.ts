@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import CarController from '../Controllers/Car.controller';
-import checkId from '../middlewares/car.middlewares';
+import checkId from '../middlewares/middlewares';
 
 const carRouter = Router();
 
