@@ -30,6 +30,11 @@ abstract class AbstractODM<T> {
     const returnedInfo = await this.model.findOne({ _id: id });
     return returnedInfo;
   }
+
+  public async updateById(id: string, obj: T): Promise<T | null> {
+    const returnedInfo = await this.model.findOneAndUpdate({ _id: id, ...obj });
+    return returnedInfo;
+  }
 }
 
 export default AbstractODM;

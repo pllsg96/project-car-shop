@@ -34,6 +34,14 @@ class CarService {
     if (!getCarById) return { status: 404, message: 'Car not found' };
     return { status: 200, result: carInfo };
   }
+
+  public async updateCarById(id: string, carInfo: ICar) {
+    const carModel = new CarModel();
+    const getByIdAndUpdate = await carModel.updateById(id, carInfo);
+    if (!getByIdAndUpdate) return { status: 404, message: 'Car not found' };
+    const updatedCarInfo = this.carDomain(getByIdAndUpdate as ICar);
+    return { status: 200, result: updatedCarInfo };
+  }
 }
 
 export default CarService;
