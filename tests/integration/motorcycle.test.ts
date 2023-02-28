@@ -1,43 +1,45 @@
-// import * as sinon from 'sinon';
-// import * as chai from 'chai';
-// import { Model } from 'mongoose';
-// import {
-  
-// } from './mocks/motorcycles.mocks';
-// import CarService from '../../src/Services/Car.service';
+import * as sinon from 'sinon';
+import * as chai from 'chai';
+import { Model } from 'mongoose';
+import MotorcycleService from '../../src/Services/Motorcycle.service';
+import {
+  mockCreatingMotorcycle,
+  mockCreatingMotorcycleResponse,
+  mockFindAllMotorcycles,
+} from './mocks/motorcycles.mocks';
 
-// const { expect } = chai;
+const { expect } = chai;
 
-// describe('Teste da rota Cars', function () {
-//   describe('Verifica se retorna todos os carros ao requisitar na rota /cars', function () {
-//     beforeEach(sinon.restore);
+describe('Teste da rota Cars', function () {
+  describe('Verifica se retorna todas as motos ao requisitar na rota /motorcycles', function () {
+    beforeEach(sinon.restore);
 
-//     it('Espera retornar o carro criado', async function () {
-//       const service = new CarService();
-//       sinon.stub(Model, 'create').resolves(mockCreatingCarResponse);
-//       const chaiHttpResponse = await service.createCar(mockCreatingCar);
+    it('Espera retornar o carro criado', async function () {
+      const service = new MotorcycleService();
+      sinon.stub(Model, 'create').resolves(mockCreatingMotorcycle);
+      const chaiHttpResponse = await service.createMotorcycle(mockCreatingMotorcycleResponse);
 
-//       expect(chaiHttpResponse.status).to.be.equal(201);
-//       expect(chaiHttpResponse.result).to.be.deep.equal(mockCreatingCarResponse);
-//     });
+      expect(chaiHttpResponse.status).to.be.equal(201);
+      expect(chaiHttpResponse.result).to.be.deep.equal(mockCreatingMotorcycleResponse);
+    });
 
-//     it('Espera retornar todos os carros existentes', async function () {
-//       const service = new CarService();
-//       sinon.stub(Model, 'find').resolves(mockFindAllCars);
-//       const chaiHttpResponse = await service.findAll();
+    it('Espera retornar todos os carros existentes', async function () {
+      const service = new MotorcycleService();
+      sinon.stub(Model, 'find').resolves(mockFindAllMotorcycles);
+      const chaiHttpResponse = await service.findAll();
 
-//       expect(chaiHttpResponse.status).to.be.equal(200);
-//       expect(chaiHttpResponse.result).to.be.deep.equal(mockFindAllCars);
-//       expect(chaiHttpResponse.result).to.be.length(2);
-//     });
+      expect(chaiHttpResponse.status).to.be.equal(200);
+      expect(chaiHttpResponse.result).to.be.deep.equal(mockFindAllMotorcycles);
+      expect(chaiHttpResponse.result).to.be.length(2);
+    });
 
-//     it('Espera retornar um carro específico pelo Id', async function () {
-//       const service = new CarService();
-//       sinon.stub(Model, 'findOne').resolves(mockCreatingCarResponse);
-//       const chaiHttpResponse = await service.findById('63fcb9659b7e9942ab2c5b35');
+    it('Espera retornar um carro específico pelo Id', async function () {
+      const service = new MotorcycleService();
+      sinon.stub(Model, 'findOne').resolves(mockCreatingMotorcycleResponse);
+      const chaiHttpResponse = await service.findById('63fe6b566d340cbc00e09dfa');
 
-//       expect(chaiHttpResponse.status).to.be.equal(200);
-//       expect(chaiHttpResponse.result).to.be.deep.equal(mockCreatingCarResponse);
-//     });
-//   });
-// });
+      expect(chaiHttpResponse.status).to.be.equal(200);
+      expect(chaiHttpResponse.result).to.be.deep.equal(mockCreatingMotorcycleResponse);
+    });
+  });
+});
