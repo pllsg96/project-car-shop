@@ -42,8 +42,32 @@ const mockFindAllCars = [
   },
 ];
 
+const mockUpdateOmega = {
+  id: '63fcb8779b7e9942ab2c5b31',
+  model: 'Omega',
+  year: 1998,
+  color: 'Red',
+  status: true,
+  buyValue: 15.99,
+  doorsQty: 4,
+  seatsQty: 5,
+};
+
+const mockUpdateResult = {
+  id: '63fcb8779b7e9942ab2c5b31',
+  model: 'Omega',
+  year: 1998,
+  color: 'Red',
+  status: true,
+  buyValue: 30.99,
+  doorsQty: 4,
+  seatsQty: 5,
+};
+
 export {
   mockCreatingCar,
   mockCreatingCarResponse,
   mockFindAllCars,
+  mockUpdateOmega,
+  mockUpdateResult,
 };

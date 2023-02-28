@@ -1,39 +1,54 @@
-// import * as sinon from 'sinon';
-// import * as chai from 'chai';
-// import chaiHttp = require('chai-http');
-// import { app } from '../../src/app';
+import * as sinon from 'sinon';
+import * as chai from 'chai';
+import { Model } from 'mongoose';
+import {
+  mockCreatingCar,
+  mockCreatingCarResponse,
+  mockFindAllCars,
+} from './mocks/cars.mocks';
+import CarService from '../../src/Services/Car.service';
 
-// import CarModel from '../../src/Models/Car.model';
-// import { mockedLeaderboardAway, mockedLeaderboardHome } from './mocks/leaderboard.mock';
+const { expect } = chai;
 
-// chai.use(chaiHttp);
+describe('Teste da rota Cars', function () {
+  describe('Verifica se retorna todos os carros ao requisitar na rota /cars', function () {
+    beforeEach(sinon.restore);
 
-// const { expect } = chai;
+    it('Espera retornar o carro criado', async function () {
+      const service = new CarService();
+      sinon.stub(Model, 'create').resolves(mockCreatingCarResponse);
+      const chaiHttpResponse = await service.createCar(mockCreatingCar);
 
-// describe('Teste da rota Leaderboard', () => {
-//   describe('Verifica se retorna todos os leaderboard ao requisitar na rota /leaderboard', () => {
-//     beforeEach(sinon.restore);
+      expect(chaiHttpResponse.status).to.be.equal(200);
+      expect(chaiHttpResponse.result).to.be.deep.equal(mockCreatingCarResponse);
+    });
 
-//     it('Espera retornar o leaderboard de Home', async () => {
-//       const chaiHttpResponse = await chai
-//         .request(app)
-//         .get('/leaderboard/home')
-//         .send({});
+    it('Espera retornar todos os carros existentes', async function () {
+      const service = new CarService();
+      sinon.stub(Model, 'find').resolves(mockFindAllCars);
+      const chaiHttpResponse = await service.findAll();
 
-//       expect(chaiHttpResponse.status).to.be.equal(200);
-//       expect(chaiHttpResponse.body).to.be.deep.equal(mockedLeaderboardHome);
-//       expect(chaiHttpResponse.body).to.be.length(16);
-//     });
+      expect(chaiHttpResponse.status).to.be.equal(200);
+      expect(chaiHttpResponse.result).to.be.deep.equal(mockFindAllCars);
+      expect(chaiHttpResponse.result).to.be.length(2);
+    });
 
-//     it('Espera retornar o leaderboard de Away', async () => {
-//       const chaiHttpResponse = await chai
-//         .request(app)
-//         .get('/leaderboard/away')
-//         .send({});
+    it('Espera retornar um carro específico pelo Id', async function () {
+      const service = new CarService();
+      sinon.stub(Model, 'findOne').resolves(mockCreatingCarResponse);
+      const chaiHttpResponse = await service.findById('63fcb9659b7e9942ab2c5b35');
 
-//       expect(chaiHttpResponse.status).to.be.equal(200);
-//       expect(chaiHttpResponse.body).to.be.deep.equal(mockedLeaderboardAway);
-//       expect(chaiHttpResponse.body).to.be.length(16);
-//     });
-//   })
-// });
+      expect(chaiHttpResponse.status).to.be.equal(200);
+      expect(chaiHttpResponse.result).to.be.deep.equal(mockCreatingCarResponse);
+    });
+
+    // it('Espera fazer uma atualização no carro', async function () {
+    //   const service = new CarService();
+    //   sinon.stub(Model, 'findByIdAndUpdate').resolves();
+    //   const chaiHttpResponse = await service.updateCarById(mockCreatingCar);
+
+    //   expect(chaiHttpResponse.status).to.be.equal(200);
+    //   expect(chaiHttpResponse.result).to.be.deep.equal(mockCreatingCarResponse);
+    // });
+  });
+});
