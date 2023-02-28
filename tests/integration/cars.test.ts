@@ -19,7 +19,7 @@ describe('Teste da rota Cars', function () {
       sinon.stub(Model, 'create').resolves(mockCreatingCarResponse);
       const chaiHttpResponse = await service.createCar(mockCreatingCar);
 
-      expect(chaiHttpResponse.status).to.be.equal(200);
+      expect(chaiHttpResponse.status).to.be.equal(201);
       expect(chaiHttpResponse.result).to.be.deep.equal(mockCreatingCarResponse);
     });
 
@@ -41,14 +41,5 @@ describe('Teste da rota Cars', function () {
       expect(chaiHttpResponse.status).to.be.equal(200);
       expect(chaiHttpResponse.result).to.be.deep.equal(mockCreatingCarResponse);
     });
-
-    // it('Espera fazer uma atualização no carro', async function () {
-    //   const service = new CarService();
-    //   sinon.stub(Model, 'findByIdAndUpdate').resolves();
-    //   const chaiHttpResponse = await service.updateCarById(mockCreatingCar);
-
-    //   expect(chaiHttpResponse.status).to.be.equal(200);
-    //   expect(chaiHttpResponse.result).to.be.deep.equal(mockCreatingCarResponse);
-    // });
   });
 });
