@@ -3,9 +3,9 @@ import IMotorcycle from '../Interfaces/IMotorcycle';
 import MotorcycleModel from '../Models/Motorcycle.model';
 
 class MotorcycleService {  
-  private MotorcycleDomain(newMotorcycle: IMotorcycle): Motorcycle | null {
-    if (newMotorcycle) {
-      return new Motorcycle(newMotorcycle);
+  private MotorcycleDomain(motorCycleAfterDomain: IMotorcycle): Motorcycle | null {
+    if (motorCycleAfterDomain) {
+      return new Motorcycle(motorCycleAfterDomain);
     }
     return null;
   }

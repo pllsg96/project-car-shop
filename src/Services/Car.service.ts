@@ -3,9 +3,9 @@ import ICar from '../Interfaces/ICar';
 import CarModel from '../Models/Car.model';
 
 class CarService {  
-  private carDomain(newCar: ICar): Car | null {
-    if (newCar) {
-      return new Car(newCar);
+  private carDomain(carAfterDomain: ICar): Car | null {
+    if (carAfterDomain) {
+      return new Car(carAfterDomain);
     }
     return null;
   }
