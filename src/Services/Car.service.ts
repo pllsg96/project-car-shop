@@ -2,6 +2,8 @@ import Car from '../Domains/Car';
 import ICar from '../Interfaces/ICar';
 import CarModel from '../Models/Car.model';
 
+const CAR_NOT_FOUND = 'Car not found';
+
 class CarService {  
   private carDomain(carAfterDomain: ICar): Car | null {
     if (carAfterDomain) {
@@ -31,16 +33,23 @@ class CarService {
     const carModel = new CarModel();
     const getCarById = await carModel.findById(id);
     const carInfo = this.carDomain(getCarById as ICar);
-    if (!getCarById) return { status: 404, message: 'Car not found' };
+    if (!getCarById) return { status: 404, message: CAR_NOT_FOUND };
     return { status: 200, result: carInfo };
   }
 
   public async updateCarById(id: string, carInfo: ICar) {
     const carModel = new CarModel();
     const getByIdAndUpdate = await carModel.updateById(id, carInfo);
-    if (!getByIdAndUpdate) return { status: 404, message: 'Car not found' };
+    if (!getByIdAndUpdate) return { status: 404, message: CAR_NOT_FOUND };
     const updatedCarInfo = this.carDomain(getByIdAndUpdate as ICar);
     return { status: 200, result: updatedCarInfo };
+  }
+
+  public async deleteCarById(id: string) {
+    const carModel = new CarModel();
+    const deleteCheck = await carModel.deleteById(id);
+    if (!deleteCheck) return { status: 404, message: CAR_NOT_FOUND };
+    return { status: 204 };
   }
 }
 
