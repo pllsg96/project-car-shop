@@ -11,5 +11,7 @@ motorcycleRouter.get('/', motorcycleController.findAll.bind(motorcycleController
 motorcycleRouter.get('/:id', checkId, motorcycleController.findById.bind(motorcycleController));
 motorcycleRouter.put('/:id', checkId, motorcycleController
   .updateMotoById.bind(motorcycleController));
+motorcycleRouter.delete('/:id', checkId, motorcycleController
+  .deleteMotoById.bind(motorcycleController));
 
 export default motorcycleRouter;
