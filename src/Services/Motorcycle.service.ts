@@ -35,6 +35,14 @@ class MotorcycleService {
     if (!getMotorcycleById) return { status: 404, message: 'Motorcycle not found' };
     return { status: 200, result: motorcycleInfo };
   }
+
+  public async updateMotoById(id: string, motoInfo: IMotorcycle) {
+    const motorcycleModel = new MotorcycleModel();
+    const getByIdAndUpdate = await motorcycleModel.updateById(id, motoInfo);
+    if (!getByIdAndUpdate) return { status: 404, message: 'Motorcycle not found' };
+    const updatedMotoInfo = this.MotorcycleDomain(getByIdAndUpdate as IMotorcycle);
+    return { status: 200, result: updatedMotoInfo };
+  }
 }
 
 export default MotorcycleService;

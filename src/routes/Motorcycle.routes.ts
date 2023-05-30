@@ -9,5 +9,7 @@ const motorcycleController = new MotorcycleController();
 motorcycleRouter.post('/', motorcycleController.createMotorcycle.bind(motorcycleController));
 motorcycleRouter.get('/', motorcycleController.findAll.bind(motorcycleController));
 motorcycleRouter.get('/:id', checkId, motorcycleController.findById.bind(motorcycleController));
+motorcycleRouter.put('/:id', checkId, motorcycleController
+  .updateMotoById.bind(motorcycleController));
 
 export default motorcycleRouter;
