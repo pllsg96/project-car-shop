@@ -36,7 +36,7 @@ abstract class AbstractODM<T> {
     return returnedInfo;
   }
 
-  public async deleteById(id: string): Promise<any> {
+  public async deleteById(id: string): Promise<T | null> {
     const returnedInfo = await this.model.findOneAndDelete({ _id: id });
     return returnedInfo;
   }
