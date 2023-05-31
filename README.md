@@ -5,7 +5,7 @@
 ## Descrição
 <div align="justify">
   <p>
-    Projeto realizado com objetivo de construir uma API RESTful para o cadastro, listagem, alteração e deleção de veículos, sejam motocicletas ou carros. 
+    Projeto realizado com objetivo de construir uma API RESTful para o cadastro, listagem, alteração e deleção de veículos, sejam motocicletas ou carros. Este projeto pode ser aplicado em uma concessionária por exemplo, onde se haveria um estoque e nele teria de haver algum tipo de controle, podendo este ser feito através deste projeto backend. 
     <br>
   </p>
 </div>
@@ -77,7 +77,7 @@ $ npm run dev
 ```http
 POST /cars
 ```
-- Os atributos necessários para criar um carro estão na tabela:
+Os atributos necessários para criar um carro estão na tabela:
 
 | Atributos | Descrição |
 | :-------: | :-------- |
@@ -102,6 +102,23 @@ POST /cars
   "buyValue": 20.990,
   "doorsQty": 2,
   "seatsQty": 5
+}
+```
+</details>
+
+<details>
+  <summary>Resposta com status<code>201</code></summary>
+
+```json
+{
+    "id": "64775e702ef0fbffad2ade9c",
+    "model": "Fiat Uno",
+    "year": 2002,
+    "color": "Azul",
+    "status": true,
+    "buyValue": 20.99,
+    "doorsQty": 2,
+    "seatsQty": 5
 }
 ```
 </details>
