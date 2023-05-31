@@ -72,11 +72,6 @@ $ npm run dev
 ## Rotas
 
 <h3><b>Carros</b></h3>
-<h3>Cadastro de um novo carro</h3>
-
-```http
-POST /cars
-```
 Os atributos necessários para criar um carro estão na tabela:
 
 | Atributos | Descrição |
@@ -89,6 +84,12 @@ Os atributos necessários para criar um carro estão na tabela:
 | `buyValue` | _Number_ contendo valor de compra do veículo |
 | `doorsQty` | _Number_ contendo quantidade de portas de um carro |
 | `seatsQty` | _Number_ contendo quantidade de assentos de um carro |
+
+<h3>Cadastro de um novo carro</h3>
+
+```http
+POST /cars
+```
 
 <details>
   <summary>Exemplo de body para cadastro</summary>
@@ -107,7 +108,7 @@ Os atributos necessários para criar um carro estão na tabela:
 </details>
 
 <details>
-  <summary>Resposta com status<code>201</code></summary>
+  <summary>Resposta com status code <code>201</code></summary>
 
 ```json
 {
@@ -123,7 +124,116 @@ Os atributos necessários para criar um carro estão na tabela:
 ```
 </details>
 
+<br>
+<h3>Listagem de todos os carros cadastrados</h3>
+
+```http
+GET /cars
+```
+
+<details>
+  <summary>Resposta com status code <code>200</code></summary>
+
+```json
+[
+    {
+        "id": "64775e702ef0fbffad2ade9c",
+        "model": "Fiat Uno",
+        "year": 2002,
+        "color": "Azul",
+        "status": true,
+        "buyValue": 20.99,
+        "doorsQty": 2,
+        "seatsQty": 5
+    },
+    {
+        "id": "6477bde32ef0fbffad2adea4",
+        "model": "Astra",
+        "year": 2006,
+        "color": "Preto",
+        "status": true,
+        "buyValue": 30,
+        "doorsQty": 4,
+        "seatsQty": 5
+    }
+]
+```
+</details>
+
+<br>
+<h3>Busca de carro à partir do id</h3>
+
+```http
+GET /cars/id
+```
+
+<details>
+  <summary>Resposta com status code <code>200</code></summary>
+
+```json
+{
+    "id": "64775e702ef0fbffad2ade9c",
+    "model": "Fiat Uno",
+    "year": 2002,
+    "color": "Azul",
+    "status": true,
+    "buyValue": 20.99,
+    "doorsQty": 2,
+    "seatsQty": 5
+}
+```
+</details>
+
+<br>
+<h3>Alteração de dados à partir do id</h3>
+
+```http
+PUT /cars/id
+```
+  <summary>Exemplo do body para alteração</summary>
+
+```json
+{
+  "model": "Fiat Uno",
+  "year": 2023,
+  "color": "Cinza",
+  "status": true,
+  "buyValue": 40.000,
+  "doorsQty": 2,
+  "seatsQty": 5
+}
+```
+</details>
+
+<details>
+  <summary>Resposta com status code <code>200</code></summary>
+
+```json
+{
+    "id": "64775e702ef0fbffad2ade9c",
+    "model": "Fiat Uno",
+    "year": 2023,
+    "color": "Cinza",
+    "status": true,
+    "buyValue": 40,
+    "doorsQty": 2,
+    "seatsQty": 5
+}
+```
+</details>
+
+<br>
+<h3>Deletar carro à partir do id</h3>
+
+```http
+DELETE /cars/id
+```
+  <summary>Resposta com status code <code>204</code></summary>
+
+```json
+{}
+```
+</details>
+
 ####
-
-
 # :construction: README customizado em construção ! :construction:
