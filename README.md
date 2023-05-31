@@ -1,6 +1,6 @@
-<h1 align="center">
+<h1 align="center"><b>
   Projeto Car Shop
-</h1>
+</b></h1>
 
 ## Descrição
 <div align="justify">
@@ -21,6 +21,7 @@
     <li>Docker</li>
     <li>Mocha</li>
     <li>Sinon</li>
+    <li>SOLID</li>
     <li>POO</li>
   </ul>
 </div>
@@ -67,5 +68,45 @@ $ npm install
 # Para iniciar o servidor, digite no terminal do container
 $ npm run dev
 ```
+
+## Rotas
+
+<h3><b>Carros</b></h3>
+<h3>Cadastro de um novo carro</h3>
+
+```http
+POST /cars
+```
+- Os atributos necessários para criar um carro estão na tabela:
+
+| Atributos | Descrição |
+| :-------: | :-------- |
+| `id`   | _String_ contendo id do veículo |
+| `model`   | _String_ contendo modelo do veículo |
+| `year`    | _Number_ contendo ano de fabricação do veículo |
+| `color`   | _String_ contendo cor principal do veículo |
+| `status`  | _Booleano_ contendo status que define se um veículo pode ou não ser comprado _(atributo opcional)_ |
+| `buyValue` | _Number_ contendo valor de compra do veículo |
+| `doorsQty` | _Number_ contendo quantidade de portas de um carro |
+| `seatsQty` | _Number_ contendo quantidade de assentos de um carro |
+
+<details>
+  <summary>Exemplo de body para cadastro</summary>
+
+```json
+{
+  "model": "Fiat Uno",
+  "year": 2002,
+  "color": "Azul",
+  "status": true,
+  "buyValue": 20.990,
+  "doorsQty": 2,
+  "seatsQty": 5
+}
+```
+</details>
+
+####
+
 
 # :construction: README customizado em construção ! :construction:
