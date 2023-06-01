@@ -395,6 +395,7 @@ DELETE /motorcycles/:id
 ```
 <details>
   <summary>Resposta com status code <code>204</code></summary>
+  
 ```json
 {}
 ```
