@@ -71,7 +71,7 @@ $ npm run dev
 
 ## Rotas
 
-<h3><b>Carros</b></h3>
+<h2><b>Carros</b></h2>
 Os atributos necessários para criar um carro estão na tabela:
 
 | Atributos | Descrição |
@@ -164,7 +164,7 @@ GET /cars
 <h3>Busca de carro à partir do id</h3>
 
 ```http
-GET /cars/id
+GET /cars/:id
 ```
 
 <details>
@@ -188,7 +188,7 @@ GET /cars/id
 <h3>Alteração de dados à partir do id</h3>
 
 ```http
-PUT /cars/id
+PUT /cars/:id
 ```
 
 <details>
@@ -228,7 +228,175 @@ PUT /cars/id
 <h3>Deletar carro à partir do id</h3>
 
 ```http
-DELETE /cars/id
+DELETE /cars/:id
+```
+  <summary>Resposta com status code <code>204</code></summary>
+
+```json
+{}
+```
+</details>
+
+<!-- moto------------------------------ -->
+
+<h2><b>Motos</b></h2>
+Os atributos necessários para criar uma nova motocicleta estão na tabela:
+
+| Atributos | Descrição |
+| :-------: | :-------- |
+| `id`   | _String_ contendo id do veículo |
+| `model`   | _String_ contendo modelo do veículo |
+| `year`    | _Number_ contendo ano de fabricação do veículo |
+| `color`   | _String_ contendo cor principal do veículo |
+| `status`  | _Booleano_ contendo status que define se um veículo pode ou não ser comprado _(atributo opcional)_ |
+| `buyValue` | _Number_ contendo valor de compra do veículo |
+| `category` | _String_ contendo categoria da moto _(opções: `Street`, `Custom` ou `Trail`)_ |
+| `engineCapacity` | _Number_ contendo capacidade do motor |
+
+<h3>Cadastro de uma nova motocicleta</h3>
+
+```http
+POST /motorcycles
+```
+
+<details>
+  <summary>Exemplo de body para cadastro</summary>
+
+```json
+{
+  "model": "Yamaha Lander",
+  "year": 2019,
+  "color": "Preta",
+  "status": true,
+  "buyValue": 18.000,
+  "category": "Trail",
+  "engineCapacity": 250
+}
+```
+</details>
+
+<details>
+  <summary>Resposta com status code <code>201</code></summary>
+
+```json
+{
+    "id": "6478cc6f3ef01efe20f28929",
+    "model": "Yamaha Lander",
+    "year": 2019,
+    "color": "Preta",
+    "status": true,
+    "buyValue": 18,
+    "category": "Trail",
+    "engineCapacity": 250
+}
+```
+</details>
+
+<br>
+<h3>Listagem de todas as motocicletas cadastradas</h3>
+
+```http
+GET /motorcycles
+```
+
+<details>
+  <summary>Resposta com status code <code>200</code></summary>
+
+```json
+[
+    {
+        "id": "6478cc6f3ef01efe20f28929",
+        "model": "Yamaha Lander",
+        "year": 2019,
+        "color": "Preta",
+        "status": true,
+        "buyValue": 18,
+        "category": "Trail",
+        "engineCapacity": 250
+    },
+    {
+        "id": "6478ccb23ef01efe20f2892b",
+        "model": "Vulcan S",
+        "year": 2022,
+        "color": "Vermelha",
+        "status": false,
+        "buyValue": 45,
+        "category": "Street",
+        "engineCapacity": 900
+    }
+]
+```
+</details>
+
+<br>
+<h3>Busca de motocicleta à partir do id</h3>
+
+```http
+GET /motorcycles/:id
+```
+
+<details>
+  <summary>Resposta com status code <code>200</code></summary>
+
+```json
+{
+    "id": "6478ccb23ef01efe20f2892b",
+    "model": "Vulcan S",
+    "year": 2022,
+    "color": "Vermelha",
+    "status": false,
+    "buyValue": 45,
+    "category": "Street",
+    "engineCapacity": 900
+}
+```
+</details>
+
+<br>
+<h3>Alteração de dados à partir do id</h3>
+
+```http
+PUT /motorcycles/:id
+```
+
+<details>
+<summary>Exemplo do body para alteração</summary>
+
+```json
+{
+    "model": "Vulcan S",
+    "year": 2022,
+    "color": "Cinza",
+    "status": false,
+    "buyValue": 45,
+    "category": "Street",
+    "engineCapacity": 900
+}
+```
+</details>
+
+<details>
+  <summary>Resposta com status code <code>200</code></summary>
+
+```json
+{
+    "id": "6478ccb23ef01efe20f2892b",
+    "model": "Vulcan S",
+    "year": 2022,
+    "color": "Cinza",
+    "status": false,
+    "buyValue": 45,
+    "category": "Street",
+    "engineCapacity": 900
+}
+```
+</details>
+
+<br>
+<h3>Deletar motocicleta à partir do id</h3>
+
+```http
+DELETE /motorcycles/:id
 ```
   <summary>Resposta com status code <code>204</code></summary>
 
