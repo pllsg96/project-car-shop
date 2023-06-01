@@ -66,7 +66,7 @@ $ docker exec -it car-shop bash
 $ npm install
 
 # Para iniciar o servidor, digite no terminal do container
-$ npm run dev
+$ npm run server
 ```
 
 ## Rotas
