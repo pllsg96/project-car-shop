@@ -5,8 +5,7 @@
 ## Descrição
 <div align="justify">
   <p>
-    Projeto realizado com objetivo de construir uma API RESTful para o cadastro, listagem, alteração e deleção de veículos, sejam motocicletas ou carros. Este projeto pode ser aplicado em uma concessionária por exemplo, onde se haveria um estoque e nele teria de haver algum tipo de controle, podendo este ser feito através deste projeto backend. 
-    <br>
+    Projeto realizado com objetivo de construir uma API RESTful para o cadastro, listagem, alteração e deleção de veículos, sejam motocicletas ou carros. A aplicação prática poderia ser realizada a exemplo no gerenciamento dos carros em uma concessionária ou locadora de carros. 
   </p>
 </div>
 
@@ -124,7 +123,7 @@ POST /cars
 ```
 </details>
 
-<br>
+
 <h3>Listagem de todos os carros cadastrados</h3>
 
 ```http
@@ -160,7 +159,7 @@ GET /cars
 ```
 </details>
 
-<br>
+
 <h3>Busca de carro à partir do id</h3>
 
 ```http
@@ -184,7 +183,6 @@ GET /cars/:id
 ```
 </details>
 
-<br>
 <h3>Alteração de dados à partir do id</h3>
 
 ```http
@@ -224,18 +222,19 @@ PUT /cars/:id
 ```
 </details>
 
-<br>
 <h3>Deletar carro à partir do id</h3>
 
 ```http
 DELETE /cars/:id
 ```
+<details>
   <summary>Resposta com status code <code>204</code></summary>
 
 ```json
 {}
 ```
 </details>
+<br>
 
 <!-- moto------------------------------ -->
 
@@ -292,7 +291,6 @@ POST /motorcycles
 ```
 </details>
 
-<br>
 <h3>Listagem de todas as motocicletas cadastradas</h3>
 
 ```http
@@ -328,7 +326,6 @@ GET /motorcycles
 ```
 </details>
 
-<br>
 <h3>Busca de motocicleta à partir do id</h3>
 
 ```http
@@ -352,7 +349,6 @@ GET /motorcycles/:id
 ```
 </details>
 
-<br>
 <h3>Alteração de dados à partir do id</h3>
 
 ```http
@@ -392,18 +388,14 @@ PUT /motorcycles/:id
 ```
 </details>
 
-<br>
 <h3>Deletar motocicleta à partir do id</h3>
 
 ```http
 DELETE /motorcycles/:id
 ```
+<details>
   <summary>Resposta com status code <code>204</code></summary>
-
 ```json
 {}
 ```
 </details>
-
-####
-# :construction: README customizado em construção ! :construction:
