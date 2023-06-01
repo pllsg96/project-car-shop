@@ -190,7 +190,9 @@ GET /cars/id
 ```http
 PUT /cars/id
 ```
-  <summary>Exemplo do body para alteração</summary>
+
+<details>
+<summary>Exemplo do body para alteração</summary>
 
 ```json
 {
